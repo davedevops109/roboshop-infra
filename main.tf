@@ -3,6 +3,6 @@ module "network" {
   env = var.env
 
   for_each = var.vpc
-  cidr_block = each.value.cidr.block
+  cidr_block = each.value.cidr_block
 }
 
