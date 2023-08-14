@@ -13,6 +13,6 @@ module "vpc" {
 module "docdb" {
   source = "github.com/davedevops109/tf-module-docdb"
   env    = var.env
-  subnet_ids  =
+  subnet_ids  = "///"
 }
 
