@@ -30,4 +30,7 @@ module "vpc" {
 #  value = module.subnets
 #}
 
+output "subnet_ids" {
+  value = module.vpc
+}
 
