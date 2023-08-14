@@ -16,3 +16,6 @@ module "vpc" {
 #  subnet_ids  = "///"
 #}
 
+output "vpc" {
+  value = module.vpc
+}
