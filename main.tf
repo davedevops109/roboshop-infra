@@ -10,8 +10,8 @@ module "vpc" {
   availability_zone = each.value.availability_zone
 }
 
-module "docdb" {
-  source = "https://github.com/davedevops109/tf-module-docdb"
-  env    = var.env
-  subnet_ids  = "????"
-}
+#module "docdb" {
+#  source = "https://github.com/davedevops109/tf-module-docdb"
+#  env    = var.env
+#  subnet_ids  = "????"
+#}
