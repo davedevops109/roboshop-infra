@@ -10,11 +10,13 @@ module "vpc" {
   availability_zone = each.value.availability_zone
 }
 
-#module "docdb" {
-#  source = "https://github.com/davedevops109/tf-module-docdb"
-#  env    = var.env
-#  subnet_ids  = "????"
-#}
+module "docdb" {
+  source = "https://github.com/davedevops109/tf-module-docdb"
+  env    = var.env
+
+  for_each    = var.docdb
+  subnet_ids  = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+}
 
 output "vpc" {
   value = module.vpc
