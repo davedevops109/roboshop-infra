@@ -1,5 +1,5 @@
 module "vpc" {
-  source          = "github.com/davedevops109/tf-module-vpc.git"
+  source          = "github.com/davedevops109/tf-module-vpc"
   env             = var.env
   default_vpc_id  = var.default_vpc_id
 
