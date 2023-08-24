@@ -14,11 +14,26 @@ module "docdb" {
   source = "github.com/davedevops109/tf-module-docdb.git"
   env    = var.env
 
-  for_each    = var.docdb
-  subnet_ids  = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
-  vpc_id = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
-  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
-  engine_version = each.value.engine_version
+  for_each            = var.docdb
+  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+  vpc_id              = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
+  allow_cidr          = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  engine_version      = each.value.engine_version
+  number_of_instances = each.value.number_of_instances
+  instance_class      = each.value.instance_class
+
+}
+
+module "rds" {
+  source = "github.com/davedevops109/tf-module-rds"
+  env    = var.env
+
+  for_each            = var.rds
+  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+  vpc_id              = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
+  allow_cidr          = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  engine              = each.value.engine
+  engine_version      = each.value.engine_version
   number_of_instances = each.value.number_of_instances
   instance_class      = each.value.instance_class
 
