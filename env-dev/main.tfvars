@@ -59,6 +59,6 @@ elasticache = {
     subnets_name        = "db"
     num_node_groups         = 2
     replicas_per_node_group = 1
-    instance_class      = "cache.t3.micro"
+    node_type      = "cache.t3.micro"
   }
 }
