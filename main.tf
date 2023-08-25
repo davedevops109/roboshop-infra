@@ -39,7 +39,7 @@ module "rds" {
 
 }
 
-module "elasticcache" {
+module "elasticache" {
   source = "github.com/davedevops109/tf-module-elasticache"
   env    = var.env
 
@@ -50,7 +50,6 @@ module "elasticcache" {
   num_node_groups         = each.value.num_node_groups
   replicas_per_node_group = each.value.replicas_per_node_group
   node_type               = each.value.node_type
-
 }
 
 output "vpc" {
