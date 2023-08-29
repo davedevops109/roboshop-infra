@@ -62,7 +62,7 @@ module "rabbitmq" {
   allow_cidr          = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
   engine_type         = each.value.engine_type
   engine_version      = each.value.engine_version
-  host_instance_type  = each.value.host_instance.type
+  host_instance_type  = each.value.host_instance_type
   deployment_mode     = each.value.deployment_mode
 }
 
