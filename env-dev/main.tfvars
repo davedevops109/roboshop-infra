@@ -70,6 +70,6 @@ rabbitmq = {
     engine_type         = "RabbitMQ"
     engine_version      = "3.11.16"
     host_instance_type  = "mq.t3.micro"
-    deployment_mode     = "SINGLE INSTANCE"
+    deployment_mode     = "SINGLE_INSTANCE"
   }
 }
