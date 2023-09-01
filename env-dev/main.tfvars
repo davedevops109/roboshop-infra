@@ -76,16 +76,33 @@ rabbitmq = {
 
 alb = {
   public = {
-    vpc_name    = "main"
-    subnets_type = "public_subnet_ids"
+    vpc_name      = "main"
+    subnets_type  = "public_subnet_ids"
     subnets_name  = "public"
     internal      = false
   }
   private = {
-    vpc_name    = "main"
-    subnets_type = "private_subnet_ids"
+    vpc_name      = "main"
+    subnets_type  = "private_subnet_ids"
     subnets_name  = "app"
     internal      = true
 
+  }
+}
+
+apps = {
+  frontend = {
+    name         = "frontend"
+    vpc_name     = "main"
+    subnets_type = "private_subnets_ids"
+    subnets_name = "web"
+    app_port     = 80
+  }
+  catalogue = {
+    name         = "catalogue"
+    vpc_name     = "main"
+    subnets_type = "private_subnets_ids"
+    subnets_name = "app"
+    app_port     = 8080
   }
 }
