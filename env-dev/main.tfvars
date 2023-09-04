@@ -96,6 +96,8 @@ apps = {
     vpc_name     = "main"
     subnets_type = "private_subnet_ids"
     subnets_name = "web"
+    allow_cidr_subnets_type  = "public_subnets"
+    allow_cidr_subnets_name  = "public"
     app_port     = 80
   }
   catalogue = {
@@ -104,5 +106,7 @@ apps = {
     subnets_type = "private_subnet_ids"
     subnets_name = "app"
     app_port     = 8080
+    allow_cidr_subnets_type  = "private_subnets"
+    allow_cidr_subnets_name  = "app"
   }
 }
